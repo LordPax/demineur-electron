@@ -1,0 +1,17 @@
+{
+    "name": "testelectron",
+    "version": "1.0.0",
+    "description": "test de electron",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron main.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "nodemon": "^2.0.4"
+    },
+    "dependencies": {
+        "electron": "^9.1.0"
+    }
+}
