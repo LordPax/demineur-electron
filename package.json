@@ -6,11 +6,12 @@
     "scripts": {
         "start": "electron main.js"
     },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/LordPax/demineur-electron.git"
+    },
     "author": "",
     "license": "ISC",
-    "devDependencies": {
-        "nodemon": "^2.0.4"
-    },
     "dependencies": {
         "electron": "^9.1.0"
     }

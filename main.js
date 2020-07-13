@@ -1,26 +1,44 @@
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, Menu} = require('electron')
+let win
 
 const mainWindow = () => {
-	let win = new BrowserWindow({
-		width : 800,
-		height : 600,
-		webPreferences : {
-			nodeIntegration : true
-		}
-	})
+    win = new BrowserWindow({
+        width : 800,
+        height : 600,
+        resizable : false,
+        webPreferences : {
+            nodeIntegration : true
+        }
+    })
 
-	win.loadFile('index.html')
-	// win.loadURL("https://www.youtube.fr")
-
-	win = null
+    win.loadFile('index.html')
+    // win = null
 }
 
 app.whenReady().then(mainWindow)
 
 app.on('window-all-closed', () => {
-	if (process.platform !== 'darwin') app.quit()
+    if (process.platform !== 'darwin') app.quit()
 })
 
 app.on('activate', () => {
-	if (win === null) mainWindow()
+    if (win === null) mainWindow()
 })
+
+const menu = Menu.buildFromTemplate([
+    {
+        label : 'Partie',
+        submenu : [
+            {
+                label : 'Recharger',
+                click : () => win.reload()
+            }
+        ]
+    },
+    {
+        label : "Test",
+        click : () => console.log('je suis un test')
+    }
+])
+
+Menu.setApplicationMenu(menu)
