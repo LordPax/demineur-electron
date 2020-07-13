@@ -1,4 +1,5 @@
 const {app, BrowserWindow, Menu} = require('electron')
+const path = require('path')
 let win
 
 const mainWindow = () => {
@@ -7,12 +8,12 @@ const mainWindow = () => {
         height : 600,
         resizable : false,
         webPreferences : {
-            nodeIntegration : true
+            preload : path.join(__dirname, "script/canvas.min.js"),
+            nodeIntegration : false
         }
     })
 
     win.loadFile('index.html')
-    // win = null
 }
 
 app.whenReady().then(mainWindow)
